@@ -1,0 +1,8 @@
+# student starter开关
+student.config.enabled: false
+
+# JDBC连接配置
+driverName: com.mysql.cj.jdbc.Driver
+url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&rewriteBatchedStatements=true
+user: root
+password: 123456
