@@ -76,16 +76,16 @@ CREATE TABLE `tb_goods_type` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order` (
-  `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
-  `amount` decimal(10,0) DEFAULT NULL,
-  `goods_id` bigint(20) DEFAULT NULL COMMENT '商品id',
-  `discount_id` bigint(20) DEFAULT NULL COMMENT '折扣id',
-  `status` bigint(20) DEFAULT NULL COMMENT '此处的状态是字典表中订单的状态',
-  `update_at` timestamp NULL DEFAULT NULL,
-  `update_by` timestamp NULL DEFAULT NULL,
-  `create_at` timestamp NULL DEFAULT NULL,
-  `create_by` varchar(255) DEFAULT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
+  `amount` decimal(10,0) DEFAULT '0',
+  `goods_id` bigint(20) DEFAULT '0' COMMENT '商品id',
+  `discount_id` bigint(20) DEFAULT '0' COMMENT '折扣id',
+  `status` bigint(20) DEFAULT '0' COMMENT '此处的状态是字典表中订单的状态',
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_by` varchar(255) DEFAULT '',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_by` varchar(255) DEFAULT '',
   `del_flag` tinyint(4) DEFAULT '0' COMMENT '0-正常；1-删除',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
