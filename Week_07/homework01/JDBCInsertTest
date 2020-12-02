@@ -1,0 +1,52 @@
+
+
+public class JDBCInsertTest{
+
+    public static final String JDBC_URL="jdbc:mysql://localhost:3306/geektime_eshop?rewriteBatchedStatements=true&characterEncoding=utf-8&serverTimezone=UTC";
+    public static final String USER_NAME="root";
+    public static final String PASSWORD="123456";
+
+
+    public static void main(String[]args){
+        addExecuteBatch(1000000);
+    }
+
+    /**
+     * 批处理方式
+     */
+    public static void addExecuteBatch(int number){
+
+        Connection conn=null;
+        PreparedStatement ps=null;
+        try{
+
+            Class.forName("com.mysql.jdbc.Driver");
+            conn=DriverManager.getConnection(JDBC_URL,USER_NAME,PASSWORD);
+            String sql="insert into tb_order(user_id,amount,goods_id,discount_id,status) VALUES (?,?,?,?,?);";
+            ps=conn.prepareStatement(sql);
+            conn.setAutoCommit(false);
+            int sum=1000000;
+            for(int i = 1; i<=1000000; i++){
+                ps.setInt(1, i);
+                ps.setInt(2, i * 10);
+                ps.setInt(3, 0);
+                ps.setInt(4, 0);
+                ps.setInt(5, 1);
+                ps.addBatch();
+            }
+            final int[] ints = ps.executeBatch();
+            connection.commit();
+            ps.close();
+            connection.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                ps.close();
+                conn.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+}
