@@ -1,6 +1,6 @@
 ### 调试说明
 1. 创建两个数据库名称为db,表名为tb_user的数据库实例
-2. 本地启动访问地址http://localhost:8001/swagger-ui.html#!/，点击try it out!
+2. 本地启动访问地址http://localhost:8001/swagger-ui.html#!/ ，点击try it out!
 3. insert接口示例数据
 ```sql
 {
