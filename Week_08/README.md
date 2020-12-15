@@ -4,4 +4,4 @@ Week_08作业
 - 搭建 shardingsphere-scaling 实现数据迁移(未实现)
 
 2. 基于hmily TCC和ShardingSphere的Atomikos XA实现一个简单的分布式事务应用demo。
-- hmily TCC（未实现）
+- hmily-demo (SpringCloud + hmily TCC)

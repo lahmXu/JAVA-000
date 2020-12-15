@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <property name="app_name" value="hmily-demo"/>
+    <property name="log_root" value="${log_root:-log}"/>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+
+    <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log_root}/${app_name}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>log/${app_name}.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>^A[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%c] [%M:%L] %msg %n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="AsyncAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="dailyRollingFileAppender" />
+    </appender>
+
+    <logger name="com.dfocus.dep" level="DEBUG">
+        <appender-ref ref="AsyncAppender"/>
+    </logger>
+
+</configuration>

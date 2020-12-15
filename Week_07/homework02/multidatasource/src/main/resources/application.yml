@@ -5,12 +5,12 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       master:
-        driver-class-name: com.mysql.cj.jdbc.Driver
+        driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3339/db?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
         username: root
         password: 123456
       slave1:
-        driver-class-name: com.mysql.cj.jdbc.Driver
+        driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3340/db?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
         username: root
         password: 123456

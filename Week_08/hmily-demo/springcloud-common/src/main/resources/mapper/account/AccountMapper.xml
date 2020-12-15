@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geektime.hmilydemo.common.account.mapper.AccountMapper">
+
+
+    <update id="update" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
+        update account set balance = balance - #{amount},freeze_amount= freeze_amount + #{amount} ,update_time = now()
+        where user_id =#{userId} and  balance > 0
+    </update>
+
+    <update id="confirm" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
+        update account set freeze_amount= freeze_amount - #{amount}
+          where user_id =#{userId}  and freeze_amount >0
+    </update>
+
+    <update id="cancel" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
+        update account set balance = balance + #{amount},
+          freeze_amount= freeze_amount -  #{amount}
+          where user_id =#{userId}  and freeze_amount >0
+    </update>
+</mapper>
