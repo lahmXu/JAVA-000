@@ -1,12 +1,13 @@
 package io.kimmking.rpcfx.demo.provider;
 
+import io.kimmking.rpcfx.demo.api.IUserService;
 import io.kimmking.rpcfx.demo.api.User;
-import io.kimmking.rpcfx.demo.api.UserService;
+import org.springframework.stereotype.Service;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
 
     @Override
-    public User findById(int id) {
-        return new User(id, "KK" + System.currentTimeMillis());
+    public User findById(Integer id) {
+        return new User(id, "user--" + System.currentTimeMillis());
     }
 }

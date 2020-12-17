@@ -9,62 +9,66 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public final class Rpcfx {
+
+    private final static OkHttpClient client = new OkHttpClient();
 
     static {
         ParserConfig.getGlobalInstance().addAccept("io.kimmking");
     }
 
-    public static <T> T create(final Class<T> serviceClass, final String url) {
-
-        // 0. 替换动态代理 -> AOP
-        return (T) Proxy.newProxyInstance(Rpcfx.class.getClassLoader(), new Class[]{serviceClass}, new RpcfxInvocationHandler(serviceClass, url));
-
+    public static <T> T create(Class<T> target, String url) {
+        RpcfxInvocationHandler rpcfxInvocationHandler = new RpcfxInvocationHandler();
+        return (T) rpcfxInvocationHandler.creatProxy(target,url);
     }
 
-    public static class RpcfxInvocationHandler implements InvocationHandler {
+    /**
+     * 实现MethodInterceptor，对接口进行增强
+     * @param <T>
+     */
+    public static class RpcfxInvocationHandler<T> implements MethodInterceptor {
 
-        public static final MediaType JSONTYPE = MediaType.get("application/json; charset=utf-8");
+        private Class<T> targetClass;
 
-        private final Class<?> serviceClass;
-        private final String url;
-        public <T> RpcfxInvocationHandler(Class<T> serviceClass, String url) {
-            this.serviceClass = serviceClass;
+        private String url;
+
+        public T creatProxy(Class<T> targetClass,String url){
+            this.targetClass = targetClass;
             this.url = url;
+            Enhancer enhancer = new Enhancer();
+            enhancer.setSuperclass(targetClass);
+            enhancer.setCallback(this);
+            return (T) enhancer.create();
         }
 
-        // 可以尝试，自己去写对象序列化，二进制还是文本的，，，rpcfx是xml自定义序列化、反序列化，json: code.google.com/p/rpcfx
-        // int byte char float double long bool
-        // [], data class
-
         @Override
-        public Object invoke(Object proxy, Method method, Object[] params) throws Throwable {
-            RpcfxRequest request = new RpcfxRequest();
-            request.setServiceClass(this.serviceClass.getName());
-            request.setMethod(method.getName());
-            request.setParams(params);
+        public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws IOException {
+            RpcfxRequest request = new RpcfxRequest(targetClass, method.getName(), objects);
+            RpcfxResponse response = invoke(request, url);
+            return JSON.parse(response.getResult().toString());
+
+        }
+
+        protected RpcfxResponse invoke(RpcfxRequest request, String url) throws IOException {
 
             RpcfxResponse response = post(request, url);
 
             // 这里判断response.status，处理异常
             // 考虑封装一个全局的RpcfxException
 
-            return JSON.parse(response.getResult().toString());
+            return response;
         }
-
-        private RpcfxResponse post(RpcfxRequest req, String url) throws IOException {
+        private static RpcfxResponse post(RpcfxRequest req, String url) throws IOException {
+            final MediaType JSONTYPE = MediaType.get("application/json; charset=utf-8");
             String reqJson = JSON.toJSONString(req);
             System.out.println("req json: "+reqJson);
-
-            // 1.可以复用client
-            // 2.尝试使用httpclient或者netty client
-            OkHttpClient client = new OkHttpClient();
             final Request request = new Request.Builder()
                     .url(url)
                     .post(RequestBody.create(JSONTYPE, reqJson))
@@ -75,3 +79,4 @@ public final class Rpcfx {
         }
     }
 }
+

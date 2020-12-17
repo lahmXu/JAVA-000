@@ -1,18 +1,24 @@
 package io.kimmking.rpcfx.api;
 
-public class RpcfxRequest {
+public class RpcfxRequest<T> {
 
-  private String serviceClass;
+    private Class<T> serviceClass;
 
-  private String method;
+    private String method;
 
-  private Object[] params;
+    private Object[] params;
 
-    public String getServiceClass() {
+    public RpcfxRequest(Class<T> targetClass, String methodName, Object[] objects) {
+        this.serviceClass = targetClass;
+        this.method = methodName;
+        this.params = objects;
+    }
+
+    public Class<T> getServiceClass() {
         return serviceClass;
     }
 
-    public void setServiceClass(String serviceClass) {
+    public void setServiceClass(Class<T> serviceClass) {
         this.serviceClass = serviceClass;
     }
 

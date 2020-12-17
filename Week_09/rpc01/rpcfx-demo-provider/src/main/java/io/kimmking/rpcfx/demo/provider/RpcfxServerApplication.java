@@ -3,8 +3,8 @@ package io.kimmking.rpcfx.demo.provider;
 import io.kimmking.rpcfx.api.RpcfxRequest;
 import io.kimmking.rpcfx.api.RpcfxResolver;
 import io.kimmking.rpcfx.api.RpcfxResponse;
+import io.kimmking.rpcfx.demo.api.IUserService;
 import io.kimmking.rpcfx.demo.api.OrderService;
-import io.kimmking.rpcfx.demo.api.UserService;
 import io.kimmking.rpcfx.server.RpcfxInvoker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.InvocationTargetException;
 
 @SpringBootApplication
 @RestController
@@ -26,7 +28,7 @@ public class RpcfxServerApplication {
 	RpcfxInvoker invoker;
 
 	@PostMapping("/")
-	public RpcfxResponse invoke(@RequestBody RpcfxRequest request) {
+	public RpcfxResponse invoke(@RequestBody RpcfxRequest request) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 		return invoker.invoke(request);
 	}
 
@@ -41,9 +43,9 @@ public class RpcfxServerApplication {
 	}
 
 	// 能否去掉name
-	//
-	@Bean(name = "io.kimmking.rpcfx.demo.api.UserService")
-	public UserService createUserService(){
+	// 不能，需要根据接口名来找到这个Bean
+	@Bean(name = "io.kimmking.rpcfx.demo.api.IUserService")
+	public IUserService createUserService(){
 		return new UserServiceImpl();
 	}
 
