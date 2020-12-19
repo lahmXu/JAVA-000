@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geektime.hmilydemo.common.inventory.mapper.InventoryMapper">
+
+
+    <update id="decrease" parameterType="com.geektime.hmilydemo.common.inventory.dto.InventoryDTO">
+        update inventory set total_inventory = total_inventory - #{count},
+          lock_inventory= lock_inventory + #{count}
+          where product_id =#{productId} and total_inventory > 0
+    </update>
+
+    <update id="confirm" parameterType="com.geektime.hmilydemo.common.inventory.dto.InventoryDTO">
+        update inventory set lock_inventory = lock_inventory - #{count}
+        where product_id =#{productId} and lock_inventory > 0
+    </update>
+
+    <update id="cancel" parameterType="com.geektime.hmilydemo.common.inventory.dto.InventoryDTO">
+        update inventory set total_inventory = total_inventory + #{count},
+        lock_inventory= lock_inventory - #{count}
+        where product_id =#{productId}  and lock_inventory > 0
+    </update>
+</mapper>
