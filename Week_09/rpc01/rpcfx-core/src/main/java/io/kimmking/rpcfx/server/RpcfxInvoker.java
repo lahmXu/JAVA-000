@@ -32,5 +32,4 @@ public class RpcfxInvoker {
         response.setStatus(true);
         return response;
     }
-
 }

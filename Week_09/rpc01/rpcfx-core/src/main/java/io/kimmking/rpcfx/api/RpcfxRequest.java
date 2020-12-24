@@ -8,6 +8,9 @@ public class RpcfxRequest<T> {
 
     private Object[] params;
 
+    public RpcfxRequest() {
+    }
+
     public RpcfxRequest(Class<T> targetClass, String methodName, Object[] objects) {
         this.serviceClass = targetClass;
         this.method = methodName;
@@ -37,4 +40,5 @@ public class RpcfxRequest<T> {
     public void setParams(Object[] params) {
         this.params = params;
     }
+
 }

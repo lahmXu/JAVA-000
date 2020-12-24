@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,11 @@ public class RpcfxServerApplication {
 
 	@Autowired
 	RpcfxInvoker invoker;
+
+	@GetMapping("/")
+	public String test(){
+		return "success";
+	}
 
 	@PostMapping("/")
 	public RpcfxResponse invoke(@RequestBody RpcfxRequest request) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
