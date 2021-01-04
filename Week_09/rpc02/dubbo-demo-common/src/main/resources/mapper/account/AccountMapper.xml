@@ -3,19 +3,8 @@
 <mapper namespace="com.geektime.hmilydemo.common.account.mapper.AccountMapper">
 
 
-    <update id="update" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
-        update account set balance = balance - #{amount},freeze_amount= freeze_amount + #{amount} ,update_time = now()
-        where user_id =#{userId} and  balance > 0
-    </update>
+    <insert id="insert" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
+        INSERT INTO db.tb_account (name) VALUES (#{name});
+    </insert>
 
-    <update id="confirm" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
-        update account set freeze_amount= freeze_amount - #{amount}
-          where user_id =#{userId}  and freeze_amount >0
-    </update>
-
-    <update id="cancel" parameterType="com.geektime.hmilydemo.common.account.entity.AccountDTO">
-        update account set balance = balance + #{amount},
-          freeze_amount= freeze_amount -  #{amount}
-          where user_id =#{userId}  and freeze_amount >0
-    </update>
 </mapper>

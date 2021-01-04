@@ -1,23 +1,35 @@
 server:
   port: 8088
-  address: 0.0.0.0
-  servlet:
-    context-path: /
-mybatis:
-  type-aliases-package: com.geektime.hmilydemo.common
-  mapper-locations: classpath:mapper/**/*.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 spring:
-  application:
-    name: dubbo-demo-provider
-  main:
-    allow-bean-definition-overriding: true
-  datasource:
-    driver-class-name:  com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hmily?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: 123456
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcurl: jdbc:mysql://127.0.0.1:3339/db?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcurl: jdbc:mysql://127.0.0.1:3340/db?useUnicode=true&autoReconnect=true&failOverReadOnly=false&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
+        username: root
+        password: 123456
+      # *** 数据库分库分表配置 start
+      masterslave:
+        # 查询时的负载均衡算法，目前有2种算法，round_robin（轮询）和random（随机），
+        # 算法接口是io.shardingjdbc.core.api.algorithm.masterslave.MasterSlaveLoadBalanceAlgorithm。
+        # 实现类有RandomMasterSlaveLoadBalanceAlgorithm 和 RoundRobinMasterSlaveLoadBalanceAlgorithm。
+        load-balance-algorithm-type: round_robin
+        name: dataSource
+        # 主数据源名称
+        master-data-source-name: ds0
+        # 从数据源名称，多个用逗号隔开
+        slave-data-source-names: ds1
+      props:
+        # 打印SQL
+        sql-show: true
 dubbo:
   scan:
     base-packages: io.kimmking.dubbo.demo.provider

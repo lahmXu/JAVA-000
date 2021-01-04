@@ -20,7 +20,6 @@
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.6.RELEASE" level="project" />
@@ -85,7 +84,6 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba.nacos:nacos-api:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.68" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-config-zookeeper:2.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.curator:curator-test:2.12.0" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-config-etcd:2.1.1" level="project" />
@@ -154,12 +152,6 @@
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_common:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_hotspot:0.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:transmittable-thread-local:2.11.5" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:29.0-jre" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:2.11.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.5" level="project" />
     <orderEntry type="library" name="Maven: com.lmax:disruptor:3.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.dromara:hmily-tcc:2.1.1" level="project" />
@@ -195,6 +187,55 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.6.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-jdbc-core:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-transaction-core:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-executor:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-common:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-sql92:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-engine:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-spi:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-statement:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-mysql:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-postgresql:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-oracle:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sql-parser-sqlserver:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-context:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-binder:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-parser:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-distsql-parser-engine:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-distsql-parser-statement:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sharding-route:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sharding-common:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sharding-api:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:indy:2.4.19" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-route:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-system-datetime:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-datetime-spi:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-replica-query-route:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-replica-query-common:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-replica-query-api:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sharding-rewrite:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-rewrite-engine:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-encrypt-rewrite:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-encrypt-common:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-encrypt-api:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-shadow-rewrite:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-shadow-common:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-shadow-api:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-shadow-route:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-sharding-merge:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-infra-merge:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shardingsphere:shardingsphere-encrypt-merge:5.0.0-alpha" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:29.0-jre" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.15" level="project" />
     <orderEntry type="library" name="Maven: org.apache.curator:curator-recipes:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.curator:curator-framework:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.curator:curator-client:4.0.1" level="project" />

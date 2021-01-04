@@ -6,9 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AccountMapper {
 
-    int update(AccountDTO accountDTO);
+    int insert(AccountDTO accountDTO);
 
-    int confirm(AccountDTO accountDTO);
-
-    int cancel(AccountDTO accountDTO);
 }
