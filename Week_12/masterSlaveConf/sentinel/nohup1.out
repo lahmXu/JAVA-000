@@ -1,0 +1,55 @@
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.6 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in sentinel mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26381
+ |    `-._   `._    /     _.-'    |     PID: 121
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+121:X 05 Jan 07:09:36.861 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+121:X 05 Jan 07:09:36.862 # Sentinel ID is e86b628179119ef0b9742d23035626e902d3d1b4
+121:X 05 Jan 07:09:36.862 # +monitor master mymaster 127.0.0.1 6381 quorum 2
+121:X 05 Jan 07:09:47.112 * +sentinel sentinel 2cd76c9298c4e12c5da3793acea71e2e73634643 127.0.0.1 26382 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:09:57.167 * +sentinel sentinel b37a794a59fe9c754b249aa13744cbce1c4bbb3d 127.0.0.1 26383 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.503 # +sdown master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.563 # +odown master mymaster 127.0.0.1 6381 #quorum 2/2
+121:X 05 Jan 07:20:07.564 # +new-epoch 1
+121:X 05 Jan 07:20:07.565 # +try-failover master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.572 # +vote-for-leader e86b628179119ef0b9742d23035626e902d3d1b4 1
+121:X 05 Jan 07:20:07.588 # 2cd76c9298c4e12c5da3793acea71e2e73634643 voted for e86b628179119ef0b9742d23035626e902d3d1b4 1
+121:X 05 Jan 07:20:07.592 # b37a794a59fe9c754b249aa13744cbce1c4bbb3d voted for e86b628179119ef0b9742d23035626e902d3d1b4 1
+121:X 05 Jan 07:20:07.631 # +elected-leader master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.632 # +failover-state-select-slave master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.711 # +selected-slave slave 127.0.0.1:6383 127.0.0.1 6383 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.711 * +failover-state-send-slaveof-noone slave 127.0.0.1:6383 127.0.0.1 6383 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:07.771 * +failover-state-wait-promotion slave 127.0.0.1:6383 127.0.0.1 6383 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:08.784 # +promoted-slave slave 127.0.0.1:6383 127.0.0.1 6383 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:08.784 # +failover-state-reconf-slaves master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:08.861 * +slave-reconf-sent slave 127.0.0.1:6382 127.0.0.1 6382 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:09.728 # -odown master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:09.810 * +slave-reconf-inprog slave 127.0.0.1:6382 127.0.0.1 6382 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:10.869 * +slave-reconf-done slave 127.0.0.1:6382 127.0.0.1 6382 @ mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:10.921 # +failover-end master mymaster 127.0.0.1 6381
+121:X 05 Jan 07:20:10.922 # +switch-master mymaster 127.0.0.1 6381 127.0.0.1 6383
+121:X 05 Jan 07:20:10.924 * +slave slave 127.0.0.1:6382 127.0.0.1 6382 @ mymaster 127.0.0.1 6383
+121:X 05 Jan 07:20:10.924 * +slave slave 127.0.0.1:6381 127.0.0.1 6381 @ mymaster 127.0.0.1 6383
+121:X 05 Jan 07:20:40.982 # +sdown slave 127.0.0.1:6381 127.0.0.1 6381 @ mymaster 127.0.0.1 6383
+121:X 05 Jan 07:22:32.986 # -sdown slave 127.0.0.1:6381 127.0.0.1 6381 @ mymaster 127.0.0.1 6383
+121:X 05 Jan 07:22:42.941 * +convert-to-slave slave 127.0.0.1:6381 127.0.0.1 6381 @ mymaster 127.0.0.1 6383
+121:X 05 Jan 09:53:16.776 # +tilt #tilt mode entered
+121:X 05 Jan 09:55:00.163 # -tilt #tilt mode exited
+121:X 05 Jan 09:55:39.756 # +tilt #tilt mode entered
+121:X 05 Jan 09:56:09.762 # -tilt #tilt mode exited
+121:X 05 Jan 09:56:32.276 # +tilt #tilt mode entered
+121:X 05 Jan 11:20:01.220 # +tilt #tilt mode entered
+121:X 05 Jan 11:20:31.237 # -tilt #tilt mode exited
